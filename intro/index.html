@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,13 @@
 <body>
     
 
-    <div id="app"></div>
+    <div id="app">
+        <h3>{{message}}</h3>
+        <blockquote>-{{author}}</blockquote>
+
+        <button @:click="changeQuote">Cambiar mensaje</button>
+
+    </div>
 
     <!-- Para version de documentacion oficial -->
     <!-- <div id="app">{{ message }}</div> -->
