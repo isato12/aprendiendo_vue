@@ -9,11 +9,23 @@
 
 <body>
     <div id="myApp">
-        <h1>Batman quoutes</h1>
+        <h1>Batman quoutes {{totalQuotes}}</h1>
+
+        <input type="text" placeholder="Add quote" @keypress.enter="addQuote" v-model="message">
+
+
+
+        <!-- <button @:click="toggle">Toggle Author</button>
+        <button @:click="addQuote">Add quote</button> -->
         <ul>
             <li v-for="({quote, author}, index) in quotes" :key="quote">
                 <span>{{index +1}} - {{ quote }}</span>
-                <blockquote>{{author}}</blockquote>
+                <!-- La diferencia entre v-if y v-show es que v-if elimina el elemento del DOM mientras que v-show solo oculta el elemento, por lo que es más eficiente si el elemento se muestra y oculta con frecuencia, en lugar de ser destruido y recreado. Lo contrario ocurre con v-if. que se usa en casos donde el elemento no se necesita mostrar de nuevo. 
+                Usa v-if para condiciones que cambian poco.
+                Usa v-show para alternancias frecuentes.
+                Ejemplo: Si tienes un modal que rara vez se abre, usa v-if. Si tienes un menú desplegable que el usuario puede abrir y cerrar muchas veces, usa v-show.-->
+                <!-- <blockquote v-if="showAuthor">{{author}}</blockquote> -->
+                <blockquote v-show="showAuthor">{{author}}</blockquote>
             </li>
         </ul>
     </div>

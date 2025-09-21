@@ -7,13 +7,36 @@ const quotes = [
     { quote: 'Yes, father. I shall become a bat.', author: 'Bruce Wayne/Batman, Batman: Year One' },
 ]
 
-const {createApp} = Vue;
+const {createApp, ref, computed} = Vue;
 
     const app = createApp({
         setup() {
+            const showAuthor = ref(false);
+            const newQuote = ref(quotes);
+            const message = ref('')
 
+            const totalQuotes = computed( ()=>{
+                return newQuote.value.length;
+            })
+
+            const toggle = () => {
+                //porque queremos que la funcion atra vez de un boton muestre o no al autor por lo que cambiara el valor de la variable a true o false cada que se le de click al boton
+                 showAuthor.value = !showAuthor.value;
+            }
+
+            const addQuote = () => {
+                newQuote.value.unshift({quote:message.value, author:"Batman"}) 
+                message.value = '';
+            
+            }
+            
             return {
-                quotes
+                quotes,
+                showAuthor,
+                message,
+                toggle,
+                addQuote,
+                totalQuotes
             }
         }
     });
